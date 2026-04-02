@@ -22,17 +22,17 @@
 | 天數 | 主題 | 核心產出 | 關鍵技術點 |
 | :--- | :--- | :--- | :--- |
 | **Day 1** | 網路哨兵基礎 | `create_test_pcap.py`, `main.py` | Scapy 封包構造、標準差心跳偵測 (Beaconing) |
-| **Day 2** | 端點日誌解析 | `evtx_process_hunter.py` | EVTX 二進位解碼、XPath XML 數據提取、4624/4688 行為建模 |
-| **Day 3** | 持久化監控 | *待更新* | Sysmon 配置解析、註冊表更動追蹤 |
-| ... | ... | ... | ... |
+| **Day 2** | 端點日誌解析 | `evtx_process_hunter.py` | EVTX 二進位解碼、XPath XML 數據提取、4624 行為建模 |
+| **Day 3** | 持久化行為獵捕 | `sysmon_hunter.py`, `requirements.txt` | Sysmon Event ID 13 解析、XPath 數據提取、環境取證標準化 |
+| **Day 4** | 惡意指令去混淆 | (待更新) | Base64 自動解碼、PowerShell 混淆行為偵測 |
 
 ---
 
 ### 🗓️ 開發實況紀錄 (Dev Log)
 - [x] **Day 01**: 完成 Scapy 封包解析引擎，實作 `main.py` 與 `create_test_pcap.py`。
 - [x] **Day 02**: 完成 EVTX 日誌解析模組，解決 `python-evtx` 依賴問題，成功過濾 4624 登入事件。
-- [ ] **Day 03**: (開發中) 預計導入 Sysmon 解析，監控惡意 Registry 注入。
-- [ ] **Day 04**: (待辦) 實作 PowerShell 混淆腳本特徵識別邏輯。
+- [x] **Day 03**: 成功實作 Sysmon 持久化監控模組。解決 OneDrive 路徑衝突並完成 `C:\InfoSec_Lab` 取證環境標準化遷移，產出專案 `requirements.txt` 以確保環境可移植性。
+- [ ] **Day 04**: (開發中) 預計導入 PowerShell 惡意指令自動去混淆 (Deobfuscation) 與行為標籤化。。
 
 ---
 
