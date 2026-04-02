@@ -28,6 +28,14 @@
 
 ---
 
+### 🗓️ 開發實況紀錄 (Dev Log)
+- [x] **Day 01**: 完成 Scapy 封包解析引擎，實作 `main.py` 與 `create_test_pcap.py`。
+- [x] **Day 02**: 完成 EVTX 日誌解析模組，解決 `python-evtx` 依賴問題，成功過濾 4624 登入事件。
+- [ ] **Day 03**: (開發中) 預計導入 Sysmon 解析，監控惡意 Registry 注入。
+- [ ] **Day 04**: (待辦) 實作 PowerShell 混淆腳本特徵識別邏輯。
+
+---
+
 ## 🧩 核心模組架構 (Modules)
 
 ### 1. Network Sentinel (網路監控模組)
