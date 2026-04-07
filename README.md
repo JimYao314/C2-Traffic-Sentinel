@@ -29,7 +29,6 @@
 ---
 
 ### 🗓️ 開發實況紀錄 (Dev Log)
-### 🗓️ 開發實況紀錄 (Dev Log)
 - [x] **Day 01**: 完成 Scapy 封包解析引擎，實作 `main.py` 與 `create_test_pcap.py`。
 - [x] **Day 02**: 完成 EVTX 日誌解析模組，解決 `python-evtx` 依賴問題，成功過濾 4624 登入事件。
 - [x] **Day 03**: 成功實作 Sysmon 持久化監控模組。解決 OneDrive 路徑衝突並完成 `C:\InfoSec_Lab` 取證環境標準化遷移。
