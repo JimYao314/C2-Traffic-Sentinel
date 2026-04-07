@@ -23,17 +23,18 @@
 | :--- | :--- | :--- | :--- |
 | **Day 1** | 網路哨兵基礎 | `create_test_pcap.py`, `main.py` | Scapy 封包構造、標準差心跳偵測 (Beaconing) |
 | **Day 2** | 端點日誌解析 | `evtx_process_hunter.py` | EVTX 二進位解碼、XPath XML 數據提取、4624 行為建模 |
-| **Day 3** | 持久化行為獵捕 | `sysmon_hunter.py`, `requirements.txt` | Sysmon Event ID 13 解析、XPath 數據提取、環境取證標準化 |
-| **Day 4** | 惡意指令去混淆 | (待更新) | Base64 自動解碼、PowerShell 混淆行為偵測 |
+| **Day 3** | 持久化行為獵捕 | `sysmon_hunter.py` | Sysmon Event ID 13 解析、XPath 數據提取、環境取證標準化 |
+| **Day 4** | 惡意指令去混淆 | `deobfuscator.py`, `requirements.txt` | Regex 參數捕捉、Base64/UTF-16LE 解碼、環境依賴標準化 |
 
 ---
 
 ### 🗓️ 開發實況紀錄 (Dev Log)
+### 🗓️ 開發實況紀錄 (Dev Log)
 - [x] **Day 01**: 完成 Scapy 封包解析引擎，實作 `main.py` 與 `create_test_pcap.py`。
 - [x] **Day 02**: 完成 EVTX 日誌解析模組，解決 `python-evtx` 依賴問題，成功過濾 4624 登入事件。
-- [x] **Day 03**: 成功實作 Sysmon 持久化監控模組。解決 OneDrive 路徑衝突並完成 `C:\InfoSec_Lab` 取證環境標準化遷移，產出專案 `requirements.txt` 以確保環境可移植性。
-- [ ] **Day 04**: (開發中) 預計導入 PowerShell 惡意指令自動去混淆 (Deobfuscation) 與行為標籤化。。
-
+- [x] **Day 03**: 成功實作 Sysmon 持久化監控模組。解決 OneDrive 路徑衝突並完成 `C:\InfoSec_Lab` 取證環境標準化遷移。
+- [x] **Day 04**: 實作 PowerShell 惡意指令去混淆引擎。利用 Regex 自動識別混淆參數，克服 UTF-16LE 解碼陷阱還原攻擊意圖；同步優化 `requirements.txt` 實現純淨的分析環境配置。
+- [ ] **Day 05**: (開發中) 預計實作模組化大整合，讓「日誌掃描器」具備「自動解碼」與「行為關聯」能力。
 ---
 
 ## 🧩 核心模組架構 (Modules)
