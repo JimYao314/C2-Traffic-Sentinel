@@ -3,18 +3,18 @@
 
 ![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)
 ![Security Focus](https://img.shields.io/badge/Focus-Threat%20Hunting%20%7C%20Incident%20Response-red)
-![Progress](https://img.shields.io/badge/Progress-Day%207%20%2F%2030-green)
+![Progress](https://img.shields.io/badge/Progress-Day%208%20%2F%2030-green)
 
 **Project Sphinx** 是一個為期 30 天的整合性數位鑑識與事件應變 (DFIR) 平台建構計畫。本專案旨在透過 Python 3.10+ 自動化處理海量資安日誌與網路流量，實現從「原始數據解析」到「自動化威脅連動分析」的完整 Pipeline。
 
 ---
 
 ## 🚀 技術棧 (Tech Stack)
-- **核心語言**: Python 3.10+ (具備物件導向 Class 呼叫鏈與決策引擎設計)
+- **核心語言**: Python 3.10+ (具備物件導向 Class 呼叫鏈與遞迴分析邏輯)
 - **網路分析**: Scapy (Packet crafting & parsing)
 - **主機鑑識**: python-evtx, lxml (XPath), Sysmon Integration, shlex (Path surgery)
 - **檔案解剖**: pefile (PE Structure), yara-python (Genetic Pattern Matching)
-- **數據處理**: Pandas (Big data correlation & scoring)
+- **數據處理**: Pandas (Correlation & statistics), **JSON Serialization (Standardized Reporting)**
 
 ---
 
@@ -29,6 +29,7 @@
 | **Day 5** | 模組化大整合 | `integrated_hunter.py` | **首個里程碑：** 跨模組呼叫架構、自動化解碼連動、效能採樣優化 |
 | **Day 6** | 靜態惡意程式分析 | `file_analyzer.py` | SHA256 指紋採集、PE 結構解剖 (TimeDateStamp)、YARA 基因掃描 |
 | **Day 7** | 自動化關聯獵捕 | `auto_correlation_hunter.py` | **第二個里程碑：** 事件驅動自動化管線、啟發式權重評分、Ghost Process 偵測 |
+| **Day 8** | 深度數據挖掘 | `advanced_deobfuscator.py` | **遞迴解碼引擎 (Recursion)**、多層嵌套拆解、JSON 報告序列化 |
 
 ---
 
@@ -39,8 +40,9 @@
 - [x] **Day 04**: 實作 PowerShell 去混淆引擎。克服 UTF-16LE 解碼陷阱，產出純淨 `requirements.txt`。
 - [x] **Day 05**: 達成 $\color{#E1AD01}{\text{首個整合里程碑}}$。實現「掃描即還原」自動化工作流，具備處理大規模二進位證據能力。
 - [x] **Day 06**: 實作靜態鑑定模組。不執行檔案即可透過 Hashing、PE 結構分析與 YARA 規則識別惡意基因，實現多維度檔案特徵獵捕。
-- [x] **Day 07**: 達成 $\color{#E1AD01}{\text{第二個整合里程碑}}$。實作「日誌觸發鑑定」自動化管線，解決 Ghost Process 反鑑識對抗；引入啟發式權重評分引擎，實現從文字掃描到數據決策的架構轉型。
-- [ ] **Day 08**: (預計) 進入第二週：深度數據挖掘 —— 實作 JSON 序列化日誌分析與 PowerShell 多層嵌套混淆拆解。
+- [x] **Day 07**: 達成 $\color{#E1AD01}{\text{第二個整合里程碑}}$。實作「日誌觸發鑑定」自動化管線，解決 Ghost Process 反鑑識對抗；引入啟發式權重評分引擎。
+- [x] **Day 08**: 實作進階數據挖掘模組。透過遞迴 (Recursive) 邏輯自動拆解多層嵌套混淆指令，成功破解「俄羅斯娃娃」式攻擊特徵；導入 JSON 序列化技術，將碎片化的分析過程轉化為標準化、可對接 SIEM 的結構化取證報告。
+- [ ] **Day 09**: (預計) 自動化報告撰寫：實作分析結果向 Markdown 格式的自動轉化，生成具備專業質感的資安鑑定建議書。
 
 ---
 
@@ -49,12 +51,12 @@
 ### 1. Network Sentinel (網路監控模組)
 - **亮點**: 利用標準差 (StdDev) 算法排除人為隨機流量，精準定位自動化木馬回傳心跳。
 
-### 2. Endpoint Hunter (端點獵捕模組)
-- **亮點**: 透過 XPath 實現秒級 XML 數據提取，連動 PowerShell 解碼引擎與註冊表監控功能。
+### 2. Endpoint Hunter & Deobfuscator (端點獵捕與解碼模組)
+- **亮點**: 透過 XPath 實現秒級 XML 數據提取，並具備 **「遞迴拆解」** 能力，不論駭客進行幾層 Base64 嵌套加密，皆能自動還原原始意圖。
 
 ### 3. Malware Analyst & Orchestrator (自動化鑑定指揮官)
-- **實作內容**: 跨模組邏輯連動與威脅評分。
-- **亮點**: 整合 **YARA 引擎** 與 **啟發式權重計分邏輯**，當日誌端偵測到程序啟動，系統自動完成「採樣、解剖、判定」的完整自動化取證管線。
+- **實作內容**: 跨模組邏輯連動與數據序列化。
+- **亮點**: 整合 **啟發式權重計分** 並將所有鑑定結果 **JSON 化**。這確保了分析數據可以被外部系統（如 SIEM 或自動化郵件警報）無縫調用。
 
 ---
 
@@ -71,5 +73,5 @@ python -m venv .venv
 # 3. 一鍵還原分析環境
 pip install -r requirements.txt
 
-# 4. 執行自動化連動獵捕測試
-python day7_Automation_Correlation/auto_correlation_hunter.py
+# 4. 執行多層嵌套解碼測試 (Day 8 產出)
+python day8_Advanced_Data_Mining/advanced_deobfuscator.py
