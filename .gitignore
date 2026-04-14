@@ -41,6 +41,7 @@ ehthumbs.db
 *.pcapng
 *.evtx
 *.csv
+day9_Automated_Reporting/Forensic_Report_*.md
 
 # ⚠️ 例外處理 (Exceptions)：
 # 如果你希望上傳「特製的測試用小檔案」給面試官看，可以在前面加上 ! 來破例
