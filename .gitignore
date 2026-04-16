@@ -48,3 +48,4 @@ day9_Automated_Reporting/Forensic_Report_*.md
 !test_sample.pcap
 !demo_data.csv
 !test_log.evtx
+.env
