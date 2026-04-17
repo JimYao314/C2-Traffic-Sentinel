@@ -12,7 +12,7 @@ if BASE_DIR not in sys.path:
 
 # 導入 Day 6 的專家（注意：請確保 day6 資料夾內有 __init__.py 檔案）
 try:
-    from day6_Static_Malware_Analysis.file_analyzer import (
+    from day06_Static_Malware_Analysis.file_analyzer import (
         get_file_fingerprint,
         analyze_pe_structure,
         run_yara_genetic_scan

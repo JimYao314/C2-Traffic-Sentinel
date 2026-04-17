@@ -11,7 +11,7 @@ if BASE_DIR not in sys.path:
 
 # 導入 Day 8 的進階遞迴解碼引擎
 try:
-    from day8_Advanced_Data_Mining.advanced_deobfuscator import RecursiveDeobfuscator
+    from day08_Advanced_Data_Mining.advanced_deobfuscator import RecursiveDeobfuscator
     import Evtx.Evtx as evtx_parser
     from lxml import etree
 

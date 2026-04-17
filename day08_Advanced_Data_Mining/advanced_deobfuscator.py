@@ -13,7 +13,7 @@ if BASE_DIR not in sys.path:
 # 真正發生「呼叫」的地方：從 day4 的資料夾，導入 SphinxDeobfuscator 工具
 # 語法邏輯：from [資料夾名稱].[檔案名稱] ...
 try:
-    from day4_Deobfuscation_Analysis.deobfuscator import SphinxDeobfuscator
+    from day04_Deobfuscation_Analysis.deobfuscator import SphinxDeobfuscator
 
     print("[+] 成功串聯 Day 4 解碼模組！")
 except ImportError:

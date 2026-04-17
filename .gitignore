@@ -49,3 +49,15 @@ day9_Automated_Reporting/Forensic_Report_*.md
 !demo_data.csv
 !test_log.evtx
 .env
+# === 資安分析紀錄屏蔽 (Security Records & Evidence) ===
+
+# 忽略所有名為 records 的資料夾及其內容
+**/records/
+
+# 忽略日誌分析過程產生的臨時報告檔案
+day*_*/Forensic_Report_*.md
+day*_*/Archive_Report_*.md
+
+# 忽略本地測試產生的模擬證物
+*.xml
+!reports/Sample_Enriched_Threat_Data.json
