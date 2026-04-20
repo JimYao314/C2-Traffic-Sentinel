@@ -1,9 +1,9 @@
 # 🛡️ C2-Traffic-Sentinel (Project Sphinx)
-> **整合型 C2 威脅偵測哨兵：從網路流量到端點行為的全方位自動化獵捕與應變平台**
+> **整合型 C2 威脅偵測哨兵：從網路流量到端點行為的全方位自動化獵捕、鑑定與視覺化應變平台**
 
 ![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)
 ![Security Focus](https://img.shields.io/badge/Focus-Threat%20Hunting%20%7C%20Incident%20Response-red)
-![Progress](https://img.shields.io/badge/Progress-Day%2012%20%2F%2030-green)
+![Progress](https://img.shields.io/badge/Progress-Day%2013%20%2F%2030-green)
 
 **Project Sphinx** 是一個為期 30 天的整合性數位鑑識與事件應變 (DFIR) 平台建構計畫。專案旨在透過 Python 3.10+ 自動化處理海量資安日誌與網路流量，實作從「原始數據解析」到「自動化實時攔截」的完整防禦管線。
 
@@ -13,7 +13,7 @@
 
 ### 🧩 第一階段：建立「偵測大腦」 (Day 01 - Day 14) - [進行中]
 - **目標**：完成網路、日誌、檔案與雲端情資的模組化整合。
-- **核心成果**：實作「自動決策中樞」，達成多維度威脅權重計分與全球情資連動。
+- **核心成果**：實作「自動決策中樞」，達成多維度威脅權重計分、全球情資連動與視覺化鑑定報告。
 
 ### 🔍 第二階段：深挖「隱蔽藏身處」 (Day 15 - Day 21)
 - **目標**：攻克「記憶體鑑識 (Memory Forensics)」與動態行為監控。
@@ -26,16 +26,16 @@
 ---
 
 ## 🚀 技術棧 (Tech Stack)
-- **核心語言**: Python 3.10+ (具備物件導向 Class 呼叫鏈、遞迴分析與 **Modular Orchestration**)
-- **數據分析**: Scapy (Network), python-evtx (Logs), pefile & yara-python (Malware), Requests (API)
-- **效能優化**: Streaming Pipeline (Yield/Generators), **Artifact Lifecycle Management**
-- **數據處理**: Pandas (Correlation), JSON Serialization, Secrets Management (.env), **shutil (Archiving)**
-- **報告引擎**: Markdown Templating, MITRE ATT&CK Mapping
+- **核心語言**: Python 3.10+ (Class 呼叫鏈、遞迴分析、Generator 串流、**shutil 證據存檔**)
+- **分析引擎**: Scapy (Network), python-evtx (Logs), pefile & yara-python (Malware), Requests (API)
+- **報告視覺化**: **HTML-in-Markdown (視覺分級標籤)**, Collapsible Details (摺疊證據鏈)
+- **產出管理**: **Artifact Lifecycle Management** (自動化案卷分類與展示樣板隔離)
+- **數據處理**: Pandas, JSON Serialization, Performance Benchmarking
 
 ---
 
 ## 📊 產出範例 (Sample Output)
-- [📈 全維度取證鑑定報告樣板](./reports/Sample_Enriched_Forensic_Report.md)
+- [📈 全維度視覺化鑑定報告樣板 (V2.0)](./reports/Sample_Enriched_Forensic_Report.md)
 - [🧬 融合型情資數據樣本 (JSON)](./reports/Sample_Enriched_Threat_Data.json) 
 - [⚡ 大數據掃描效能基準報告 (33,142 筆)](./reports/PERFORMANCE_LOG.md)
 
@@ -50,10 +50,9 @@
 | **Day 07** | 里程碑 II | `auto_correlation_hunter.py` | **第二個整合里程碑：** 事件驅動管線、Ghost Process 偵測 |
 | **Day 10** | 里程碑 III | `streaming_orchestrator.py` | **第三個整合里程碑：** $O(1)$ 記憶體串流引擎、204 EPS 實測 |
 | **Day 11** | 里程碑 IV | `vt_intel_radar.py` | **第四個整合里程碑：** 全球威脅情資 VirusTotal API 連動 |
-| **Day 12** | 里程碑 V | `fusion_orchestrator.py` | **第五個整合里程碑：** 跨模組情報融合與自動化案卷存檔 |
-| **Day 14** | 里程碑 VI | (Expected) | **第六個整合里程碑：** 自動決策指揮中樞正式落成 |
-| **Day 21** | 里程碑 VII | (Expected) | **第七個整合里程碑：** 記憶體遺失證據捕獲系統 |
-| **Day 30** | 終極里程碑 | (Final Delivery) | **The Enforcer 執法者模組啟動：** 達成自動化攔截應變 |
+| **Day 12** | 里程碑 V | `fusion_orchestrator.py` | **第五個整合里程碑：** 跨模組情報融合與數據中樞化 |
+| **Day 13** | 高級視覺化 | `visual_reporter_engine.py` | **V2.0 報告引擎：** 條件渲染標籤、自動化案卷存檔管理 |
+| **Day 14** | 里程碑 VI | (Expected) | **第六個整合里程碑：** 啟發式威脅評分矩陣指揮部落成 |
 
 ---
 
@@ -66,24 +65,9 @@
 - [x] **Day 07**: 達成 $\color{#E1AD01}{\text{第二個整合里程碑}}$。解決 Ghost Process 反鑑識對抗，建立閃電取證管線。
 - [x] **Day 10**: 達成 $\color{#E1AD01}{\text{第三個整合里程碑}}$。實作串流解析引擎，通過 33,142 筆真實日誌壓力測試。
 - [x] **Day 11**: 達成 $\color{#E1AD01}{\text{第四個整合里程碑}}$。成功對接 VirusTotal API，實作 Secrets 隔離管理與本地快取機制。
-- [x] **Day 12**: 達成 $\color{#E1AD01}{\text{第五個整合里程碑}}$。實作 **Intelligence Fusion (情報融合)** 引擎，將「本地解碼意圖」與「雲端通緝數據」物理合併；開發**雙軌制產出管理系統**，同步生成 GitHub 展示樣板與具備時間戳的歷史案卷 (`/records`) 實施本地案卷隔離機制，透過 .gitignore 規範確保實戰分析數據不與開源代碼混淆，實踐 OpSec 安全開發流程。。
-- [ ] **Day 13**: (開發中) 報告模板視覺化升級：實作情資數據的動態渲染邏輯。
-- [ ] **Day 14**: 達成 $\color{#E1AD01}{\text{第六個整合里程碑}}$：Orchestrator 自動決策指揮部正式完工。
-
----
-
-## 🧩 核心模組架構 (Architecture)
-
-### 1. High-Performance Detection Engine
-- **Streaming Pipeline**: 利用 `yield` 技術，實現邊讀取、邊分析、邊報警的數據流。
-- **Recursive Deobfuscator**: 自動破解多層嵌套 Base64 指令，還原隱蔽的攻擊意圖。
-
-### 2. Intelligence Fusion & Orchestration
-- **Fusion Commander**: 整合本地鑑定結果與 VirusTotal 全球情資，實現全維度數據關聯。
-- **Modular Orchestrator**: 跨模組邏輯連動，實作自動化案卷管理與歷史數據持久化存證。
-
-### 3. Automated Reporting System
-- **Reporting-as-Code**: 自動化產出具備 MITRE 映射與處置建議的鑑定書，支援產出物集中化管控。
+- [x] **Day 12**: 達成 $\color{#E1AD01}{\text{第五個整合里程碑}}$。實作 **Intelligence Fusion** 引擎，將「本地意圖」與「雲端情資」物理合併。
+- [x] **Day 13**: 實作高級視覺化報告引擎 (V2.0)。引入 **Conditional Rendering** 技術，根據威脅權重自動生成紅/黃/綠視覺標籤；開發**自動化案卷管理系統**，實現展示樣板與具備時間戳的歷史紀錄 (`/records`) 分離隔離。
+- [ ] **Day 14**: (開發中) 啟發式威脅計分矩陣：實作多維度權重判定邏輯，完善自動化指揮中心。
 
 ---
 
@@ -96,9 +80,9 @@ cd C2-Traffic-Sentinel
 # 2. 配置金鑰 (OpSec 隔離)
 # 於根目錄建立 .env 檔案並寫入: VT_API_KEY=your_key_here
 
-# 3. 啟動環境與還原
+# 3. 啟動環境與一鍵還原
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 
-# 4. 執行「情報融合」終極連動測試 (產出鑑定報告於 /reports)
-python day12_Intelligence_Fusion/fusion_orchestrator.py
+# 4. 執行視覺化報告引擎測試 (Day 13)
+python day13_Report_Visualization/visual_reporter_engine.py
