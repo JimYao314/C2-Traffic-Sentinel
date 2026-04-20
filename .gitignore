@@ -1,63 +1,49 @@
-# =========================
-# 1. Python 與 環境設定
-# =========================
+# ============================================================
+# Project Sphinx: C2-Traffic-Sentinel .gitignore
+# ============================================================
+
+# 1. Python 執行環境
 __pycache__/
 *.py[cod]
 *$py.class
 .venv/
 venv/
-ENV/
-env/
 .env
 
-# =========================
 # 2. 開發工具與編輯器 (IDE)
-# =========================
 .idea/
 .vscode/
 *.swp
 *.swo
 
-# =========================
 # 3. 作業系統產生的垃圾檔
-# =========================
 .DS_Store
 Thumbs.db
-ehthumbs.db
 
-# =========================
-# 4. Jupyter Notebook 暫存
-# =========================
-.ipynb_checkpoints/
-
-# =========================
-# 5. 資安/數據專案專屬 (極度重要)
-# =========================
-# 忽略所有龐大的日誌、資料庫與封包檔，避免塞爆 GitHub
+# 4. 資安取證數據隔離 (極度重要 - 防止證據外洩)
+# ------------------------------------------------------------
+# 忽略原始證物檔案
 *.log
-*.sqlite
-*.db
 *.pcap
 *.pcapng
 *.evtx
 *.csv
-day9_Automated_Reporting/Forensic_Report_*.md
+*.xml
+*.json
 
-# ⚠️ 例外處理 (Exceptions)：
-# 如果你希望上傳「特製的測試用小檔案」給面試官看，可以在前面加上 ! 來破例
-!test_sample.pcap
-!demo_data.csv
-!test_log.evtx
-.env
-# === 資安分析紀錄屏蔽 (Security Records & Evidence) ===
-
-# 忽略所有名為 records 的資料夾及其內容
+# 忽略所有模組下的本地私密紀錄資料夾
 **/records/
 
-# 忽略日誌分析過程產生的臨時報告檔案
+# 忽略自動生成的臨時報告 (防止 GitHub 變成垃圾場)
 day*_*/Forensic_Report_*.md
 day*_*/Archive_Report_*.md
 
-# 忽略本地測試產生的模擬證物
-*.xml
+# 5. 例外處理：公開展示樣板 (White-list for Showcase)
+# ------------------------------------------------------------
+# 這些檔案是經過脫敏處理的範例，允許上傳至 GitHub 供面試官參考
+!reports/Sample_Enriched_Forensic_Report.md
 !reports/Sample_Enriched_Threat_Data.json
+!reports/PERFORMANCE_LOG.md
+
+# 如果你有特製的測試用小封包，也可以在此破例
+#!test_sample.pcap
