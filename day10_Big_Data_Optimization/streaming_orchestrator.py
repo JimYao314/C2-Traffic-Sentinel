@@ -81,7 +81,7 @@ class SphinxStreamingSentinel:
 # --- [ 第四戰區：決策中心與效能統計 ] ---
 if __name__ == "__main__":
     # 指定 Day 2 的原始日誌檔案
-    TARGET_LOG = os.path.join(BASE_DIR, "day2_Process Relationship Analysis", "Security.evtx")
+    TARGET_LOG = os.path.join(BASE_DIR, "day02_Process Relationship Analysis", "Security.evtx")
 
     sentinel = SphinxStreamingSentinel(TARGET_LOG)
 

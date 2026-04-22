@@ -1,6 +1,6 @@
 {
     "status": "Success",
-    "timestamp": "2026-04-17T11:38:46.824526",
+    "timestamp": "2026-04-22T14:25:00.965765",
     "summary": {
         "layers_unwrapped": 1,
         "is_multi_stage": false
@@ -14,7 +14,7 @@
     ],
     "final_payload": "thoami/all",
     "cloud_intelligence": {
-        "malicious": 66,
+        "malicious": 67,
         "suspicious": 0,
         "undetected": 2,
         "link": "https://www.virustotal.com/gui/file/275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f"
